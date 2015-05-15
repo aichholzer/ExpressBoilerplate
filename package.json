@@ -1,0 +1,23 @@
+{
+  "name": "Base",
+  "description": "A very basic express boilerplate application.",
+  "version": "0.0.1",
+  "author": "Stefan Aichholzer <theaichholzer@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "main": "app/index.js",
+  "engines": {
+    "node": "0.12.x"
+  },
+  "dependencies": {
+    "body-parser": "^1.11.0",
+    "compression": "^1.2.2",
+    "express": "^4.12.2",
+    "jade": "^1.9.2",
+    "serve-favicon": "^2.1.7"
+  },
+  "devDependencies": {
+  }
+}
