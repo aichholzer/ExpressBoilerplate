@@ -1,12 +1,10 @@
 'use strict';
 
 
-var home = require('../../controllers/home');
+module.exports = function homeRoute (router, control) {
 
-module.exports = function homeRoute (router) {
-
-    router.get('/', home.index);
-    router.get('/login', home.login);
+    router.get('/', control.index);
+    router.get('/login', control.login);
 
     return router;
 };

@@ -21,12 +21,27 @@ var fs = require('fs'),
             res.status(status).send({ message: 'An error has occurred, we are on it!' });
         },
 
+
+        /**
+         * This will try to setup the routes (as found in the routes folder). It will also try to
+         * load a corresponding controller and pass it into the route, just to keep things cleaner.
+         * If a corresponding controller is not found, for a given route, then that route will not be used by the app.
+         * @returns {Router}
+         */
         setup: function router$setup () {
 
-            var schemaPath = __dirname + '/routes/';
+            var schemaPath = __dirname + '/routes/',
+                control = __dirname + '/../controllers/';
+
             fs.readdirSync(schemaPath).forEach(function (file) {
                 if (file.match(/(.+)\.js(on)?$/)) {
-                    expressRouter = require(schemaPath + file)(expressRouter);
+                    fs.stat(control + file, function(err) {
+                        if (!err) {
+                            expressRouter = require(schemaPath + file)(expressRouter, require(control + file));
+                        } else {
+                            console.error('I was not able to find a controller for the', file, 'route.');
+                        }
+                    });
                 }
             });
 
