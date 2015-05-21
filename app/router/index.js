@@ -15,7 +15,7 @@ var fs = require('fs'),
          * @param res
          * @param next
          */
-        error: function router$error (err, req, res, next) {
+        error: function router$error(err, req, res, next) {
 
             var status = err.status || 500;
             res.status(status).send({ message: 'An error has occurred, we are on it!' });
@@ -28,14 +28,14 @@ var fs = require('fs'),
          * If a corresponding controller is not found, for a given route, then that route will not be used by the app.
          * @returns {Router}
          */
-        setup: function router$setup () {
+        setup: function router$setup() {
 
             var schemaPath = __dirname + '/routes/',
                 control = __dirname + '/../controllers/';
 
             fs.readdirSync(schemaPath).forEach(function (file) {
                 if (file.match(/(.+)\.js(on)?$/)) {
-                    fs.stat(control + file, function(err) {
+                    fs.stat(control + file, function (err) {
                         if (!err) {
                             expressRouter = require(schemaPath + file)(expressRouter, require(control + file));
                         } else {
