@@ -13,7 +13,7 @@ app.use(
     require('body-parser').urlencoded({ extended: false }),
     require('compression')(),
     require('serve-favicon')(__dirname + '/public/img/favicon.png'),
-    require('./router')
+    require('./router')(express)
 );
 
 app.listen(process.env.PORT || 9000, function() {

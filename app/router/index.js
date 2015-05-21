@@ -2,7 +2,6 @@
 
 
 var fs = require('fs'),
-    expressRouter = require('express').Router(),
     appRouter = {
 
         /**
@@ -28,7 +27,7 @@ var fs = require('fs'),
          * If a corresponding controller is not found, for a given route, then that route will not be used by the app.
          * @returns {Router}
          */
-        setup: function router$setup() {
+        setup: function router$setup(router) {
 
             var schemaPath = __dirname + '/routes/',
                 control = __dirname + '/../controllers/';
@@ -37,7 +36,7 @@ var fs = require('fs'),
                 if (file.match(/(.+)\.js(on)?$/)) {
                     fs.stat(control + file, function (err) {
                         if (!err) {
-                            expressRouter = require(schemaPath + file)(expressRouter, require(control + file));
+                            router = require(schemaPath + file)(router, require(control + file));
                         } else {
                             console.error('I was not able to find a controller for the', file, 'route.');
                         }
@@ -45,9 +44,13 @@ var fs = require('fs'),
                 }
             });
 
-            expressRouter.use(this.error);
-            return expressRouter;
+            router.use(this.error);
+            return router;
         }
     };
 
-module.exports = appRouter.setup();
+module.exports = function (express) {
+
+    return appRouter.setup(express.Router());
+
+};
