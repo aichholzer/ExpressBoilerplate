@@ -17,6 +17,6 @@ app.use(
 );
 
 
-app.listen(process.env.PORT || 9000, function() {
+app.listen(process.env.PORT || 9000, function () {
     console.log('The app is up on port: ', process.env.PORT || 9000);
 });
