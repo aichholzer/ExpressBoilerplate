@@ -22,8 +22,8 @@ var fs = require('fs'),
 
 
         /**
-         * This will try to setup the routes (as found in the routes folder). It will also try to
-         * load a corresponding controller and pass it into the route, just to keep things cleaner.
+         * This will setup the routes (as found in the routes folder). It will also try to
+         * load a corresponding controller and pass it into the route, just to keep things clean.
          * If a corresponding controller is not found, for a given route, then that route will not be used by the app.
          * @returns {Router}
          */
