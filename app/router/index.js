@@ -30,7 +30,7 @@ var fs = require('fs'),
         setup: function router$setup(router) {
 
             var schemaPath = __dirname + '/routes/',
-                control = __dirname + '/../controllers/';
+                control = __dirname + '/../_controllers/';
 
             fs.readdirSync(schemaPath).forEach(function (file) {
                 if (file.match(/(.+)\.js(on)?$/)) {

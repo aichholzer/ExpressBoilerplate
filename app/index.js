@@ -4,7 +4,7 @@
 var express = require('express'),
     app = express();
 
-app.set('views', __dirname + '/public/views');
+app.set('views', __dirname + '/_views');
 app.set('view engine', 'jade');
 
 app.use(
