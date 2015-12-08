@@ -1,13 +1,17 @@
 'use strict';
 
 
-var express = require('express'),
+let express = require('express'),
     app = express();
 
-app.set('views', __dirname + '/_views');
+app.set('views', __dirname + '/mvc/views');
 app.set('view engine', 'jade');
 
 app.use(
+    function setHeaders(req, res, next) {
+        res.setHeader('X-POWERED-BY', 'analogbird.com');
+        return next();
+    },
     express.static(__dirname + '/public'),
     require('body-parser').json(),
     require('body-parser').urlencoded({ extended: false }),

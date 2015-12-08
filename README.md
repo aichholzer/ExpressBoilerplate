@@ -13,7 +13,7 @@ npm install
 then 
 
 ```
-node app
+node app/
 ```
 
 You should be all set and ready to go. Just visit: http://localhost:9000

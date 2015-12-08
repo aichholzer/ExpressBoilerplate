@@ -1,7 +1,7 @@
 'use strict';
 
 
-var fs = require('fs'),
+let fs = require('fs'),
     appRouter = {
 
         /**
@@ -16,7 +16,7 @@ var fs = require('fs'),
          */
         error: function router$error(err, req, res, next) {
 
-            var status = err.status || 500;
+            let status = err.status || 500;
             res.status(status).send({ message: 'An error has occurred, we are on it!' });
         },
 
@@ -29,8 +29,8 @@ var fs = require('fs'),
          */
         setup: function router$setup(router) {
 
-            var schemaPath = __dirname + '/routes/',
-                control = __dirname + '/../_controllers/';
+            let schemaPath = __dirname + '/routes/',
+                control = __dirname + '/../mvc/controllers/';
 
             fs.readdirSync(schemaPath).forEach(function (file) {
                 if (file.match(/(.+)\.js(on)?$/)) {

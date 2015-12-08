@@ -4,7 +4,7 @@
 module.exports = (function config() {
 
     try {
-        var configFile = (typeof process.env.NODE_ENV === 'undefined') ? 'development' : process.env.NODE_ENV,
+        let configFile = (typeof process.env.NODE_ENV === 'undefined') ? 'development' : process.env.NODE_ENV,
             configObject = require('./settings/' + configFile);
 
         return configObject;
