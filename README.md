@@ -18,4 +18,4 @@ node app/
 
 You should be all set and ready to go. Just visit: http://localhost:9000
 
-Enjoy!
+`Enjoy!`
