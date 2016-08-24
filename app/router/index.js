@@ -14,10 +14,11 @@ let fs = require('fs'),
          * @param res
          * @param next
          */
-        error: function router$error(err, req, res, next) {
+        error: function(err, req, res, next) {
 
             let status = err.status || 500;
             res.status(status).send({ message: 'An error has occurred, we are on it!' });
+            next = null;
         },
 
 
@@ -27,18 +28,18 @@ let fs = require('fs'),
          * If a corresponding controller is not found, for a given route, then that route will not be used by the app.
          * @returns {Router}
          */
-        setup: function router$setup(router) {
+        setup: function(router) {
 
-            let schemaPath = __dirname + '/routes/',
-                control = __dirname + '/../mvc/controllers/';
+            const schemaPath = __dirname + '/routes/';
+            const control = __dirname + '/../mvc/controllers/';
 
-            fs.readdirSync(schemaPath).forEach(function (file) {
+            fs.readdirSync(schemaPath).forEach(file => {
                 if (file.match(/(.+)\.js(on)?$/)) {
-                    fs.stat(control + file, function (err) {
+                    fs.stat(control + file, err => {
                         if (!err) {
                             router = require(schemaPath + file)(router, require(control + file));
                         } else {
-                            console.error('I was not able to find a controller for the', file, 'route.');
+                            console.error(`I was not able to find a controller for the ${file} route.`);
                         }
                     });
                 }
@@ -49,8 +50,4 @@ let fs = require('fs'),
         }
     };
 
-module.exports = function (express) {
-
-    return appRouter.setup(express.Router());
-
-};
+module.exports = express => appRouter.setup(express.Router());

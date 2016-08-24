@@ -6,9 +6,10 @@ let express = require('express'),
 
 app.set('views', __dirname + '/mvc/views');
 app.set('view engine', 'jade');
+app.locals.pretty = true;
 
 app.use(
-    function setHeaders(req, res, next) {
+    (req, res, next) => {
         res.setHeader('X-POWERED-BY', 'analogbird.com');
         return next();
     },
@@ -21,6 +22,6 @@ app.use(
 );
 
 
-app.listen(process.env.PORT || 9000, function () {
+app.listen(process.env.PORT || 9000, () => {
     console.log('The app is up on port: ', process.env.PORT || 9000);
 });

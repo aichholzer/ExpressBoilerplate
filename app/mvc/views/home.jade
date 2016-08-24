@@ -1,8 +1,10 @@
 doctype html
 html(lang="en")
     head
-        title #{title}
+        title Boilerplate
         meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0")
         meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
-    body(style="overflow:hidden;")
-        .container <h2>Hello, welcome to the version #{version} (I am template)</h2>
+    body
+        .container
+            p #{message} <br />This is version: #{version}
+            p (I am a rendered template.)

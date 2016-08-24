@@ -1,21 +1,23 @@
 'use strict';
 
 
-let config = require('../../config');
+const config = require('../../config');
 
 module.exports = {
 
-    index : function home$index(req, res, next) {
+    index: (req, res) => {
 
-        res.send('<h2>Hello, welcome to the version ' + config.version + '</h2>');
+        res.send({
+            message: `Hello, welcome to your boilerplate.`,
+            version: config.version
+        });
     },
 
-    login : function home$login(req, res, next) {
+    login: (req, res) => {
 
         res.render('home', {
-            title: 'Welcome',
+            message: 'Hello, welcome to your boilerplate.',
             version: config.version
         });
     }
-
 };
