@@ -1,8 +1,12 @@
 {
-  "name": "Boilerplate",
-  "description": "A very basic express boilerplate application.",
-  "version": "0.2.0",
-  "author": "Stefan Aichholzer <theaichholzer@gmail.com>",
+  "name": "boilerplate",
+  "description": "A basic express boilerplate application.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Stefan Aichholzer",
+    "email": "play@analogbird.com",
+    "url": "https://github.com/aichholzer"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:aichholzer/ExpressBoilerplate.git"
@@ -15,7 +19,7 @@
     "body-parser": "^1.15.2",
     "compression": "^1.6.2",
     "express": "^4.14.0",
-    "jade": "^1.11.0",
+    "pug": "^2.0.0-beta6",
     "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
