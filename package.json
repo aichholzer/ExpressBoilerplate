@@ -1,6 +1,6 @@
 {
   "name": "boilerplate",
-  "description": "A basic express boilerplate application.",
+  "description": "A basic Express boilerplate application.",
   "version": "1.0.0",
   "author": {
     "name": "Stefan Aichholzer",
@@ -11,15 +11,20 @@
     "type": "git",
     "url": "git@github.com:aichholzer/ExpressBoilerplate.git"
   },
+  "bugs": {
+    "url": "https://github.com/aichholzer/ExpressBoilerplate/issues"
+  },
   "main": "app/index.js",
   "engines": {
-    "node": "6.2.x"
+    "node": ">=6.2"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
     "compression": "^1.6.2",
     "express": "^4.14.0",
+    "mongoose": "^4.6.6",
     "pug": "^2.0.0-beta6",
+    "salvus": "^1.0.0",
     "serve-favicon": "^2.3.0"
   },
   "devDependencies": {

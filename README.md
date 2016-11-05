@@ -1,21 +1,33 @@
-# Boilerplate Express application
+## Express boilerplate
 
-Just clone this repository and have an app -ready to use and extend- in seconds.
-This is a very basic setup and it's intended for making the initial application architecture process much
-faster.
+An [Express](https://github.com/expressjs/express) application ready to use, and extend, in seconds!
 
-Once you have cloned this repository, install the required packages:
+This is a basic setup and it's intended for making the initial application architecture process much
+faster and easier.
 
+
+#### Setup
+
+1. Clone this repository.
+2. Install what's needed: `npm install`
+3. Copy `.env.sample` to `.env`. Change the values (if you want).
+4. Run the application: `grunt nodemon`
+
+
+#### Done
+
+Visit [http://localhost:9000](http://localhost:9000) (Unless you changed the port in the `.env` file)
+
+
+#### Contribute
 ```
-npm install
+fork https://github.com/aichholzer/ExpressBoilerplate/
 ```
 
-Make a copy of `.env.sample` and name it `.env` and fill in the required values.
 
-Run your application with either `node app/` or `grunt nodemon`
+#### License
 
-*All set and ready to go.*
+[MIT](https://github.com/aichholzer/ExpressBoilerplate/blob/master/LICENSE)
 
-Visit: [http://localhost:9000](http://localhost:9000) (Unless you changed the port number in your `.env` file)
 
-👍🏼
+#### Enjoy!

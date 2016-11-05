@@ -1,10 +1,9 @@
 'use strict';
 
 
-module.exports = (router, control) => {
+module.exports = (router, controller) => {
 
-    router.get('/', control.index);
-    router.get('/login', control.login);
+    router.get('/', controller.index);
 
     return router;
 };

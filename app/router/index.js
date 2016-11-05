@@ -6,24 +6,26 @@ const fs = require('fs');
 module.exports = express => {
 
     /**
-     * This will setup the routes (as found in the routes folder). It will also try to
-     * load a corresponding controller and pass it into the route, just to keep things clean.
-     * If a corresponding controller is not found, for a given route, then that route will
-     * not be used by the application.
+     * This will setup the routes (found in the /router/routes).
+     * For each route, it will also try to load a corresponding controller.
+     * If a corresponding controller is not found, then that route will not be available.
      * @returns {Router}
      */
     let router = express.Router();
-    fs.readdirSync(`${__dirname}/routes/`).forEach(file => {
+    const routePath = `${__dirname}/routes/`;
+    const routes = fs.readdirSync(routePath);
+    routes.forEach(file => {
         if (file.match(/(.+)\.js$/)) {
             try {
-                router = require(`${__dirname}/routes/${file}`)(router, _require(`mvc/controllers/${file}`));
+                const route = require(`${routePath+file}`);
+                const controller = _require(`core/controllers/${file}`);
+                router = route(router, controller);
             } catch (error) {
-                console.error(`I was not able to find a controller for the ${file} route.`, error);
+                console.error(`Can't load controller: ${file}`, error);
             }
         }
     });
 
-    router.use((req, res) => res.sendStatus(404).end());
+    router.use((req, res) => res.render('404'));
     return router;
 };
-
