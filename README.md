@@ -13,7 +13,7 @@ faster and easier.
 3. Copy `.env.sample` to `.env`. Change the values (if you want).
 4. Run the application: `grunt nodemon` *
 
-\* You should have [Grunt](https://github.com/gruntjs/grunt) installed globally, it not then run: `npm install -g grunt`
+\* You should have [Grunt](https://github.com/gruntjs/grunt) installed globally, if not then run: `npm install -g grunt`
 
 #### Done
 
