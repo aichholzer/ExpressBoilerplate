@@ -17,7 +17,7 @@
   "maxlen": 160,
   "node": true,
   "globals": {
-    "_require": true,
+    "attract": true,
     "describe": false,
     "it": false,
     "before": false,

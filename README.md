@@ -9,11 +9,12 @@ faster and easier.
 #### Setup
 
 1. Clone this repository.
-2. Install what's needed: `npm install`
-3. Copy `.env.sample` to `.env`. Change the values (if you want).
-4. Run the application: `grunt nodemon` *
+2. Install what's needed: `npm install`.
+3. Copy `.env.sample` to `.env`. Change the values (if needed).
+4. Run the application: `grunt nodemon *` or `npm start`
 
-\* You should have [Grunt](https://github.com/gruntjs/grunt) installed globally, if not then run: `npm install -g grunt`
+\* You should have [Grunt](https://github.com/gruntjs/grunt) installed globally, if not then run: `npm install -g grunt-cli`
+
 
 #### Done
 
@@ -30,5 +31,3 @@ fork https://github.com/aichholzer/ExpressBoilerplate/
 
 [MIT](https://github.com/aichholzer/ExpressBoilerplate/blob/master/LICENSE)
 
-
-#### Enjoy!

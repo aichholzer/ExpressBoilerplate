@@ -1,11 +1,14 @@
 'use strict';
 
 
-const fs = require('fs');
-const events = require('events');
-const salvus = require('salvus/lib/io');
-const mongoose = require('mongoose');
-const config = _require('config');
+const [
+    fs,
+    events,
+    salvus,
+    mongoose,
+    util,
+    config] = attract('fs', 'events', 'salvus/lib/io', 'mongoose', 'util', 'config');
+
 const Models = function () {
     this.schemas = {};
     events.EventEmitter.call(this);
@@ -33,7 +36,7 @@ Models.prototype.load = function () {
 
         schemas.forEach(file => {
             try {
-                this.schemas[file.replace('.js', '')] = require(schemaPath + file)(mongoose);
+                this.schemas[file.replace('.js', '')] = attract(schemaPath + file)(mongoose);
             } catch (error) {
                 this.emit('error', `Can\'t load model: ${file}`);
             }
@@ -57,5 +60,5 @@ Models.prototype.get = function (schema) {
     return loadedSchema;
 };
 
-require('util').inherits(Models, events.EventEmitter);
+util.inherits(Models, events.EventEmitter);
 module.exports = new Models();

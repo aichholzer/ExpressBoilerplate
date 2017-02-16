@@ -1,7 +1,7 @@
 'use strict';
 
 
-const fs = require('fs');
+const fs = attract('fs');
 
 module.exports = express => {
 
@@ -17,8 +17,8 @@ module.exports = express => {
     routes.forEach(file => {
         if (file.match(/(.+)\.js$/)) {
             try {
-                const route = require(`${routePath+file}`);
-                const controller = _require(`core/controllers/${file}`);
+                const route = attract(`${routePath+file}`);
+                const controller = attract(`core/controllers/${file}`);
                 router = route(router, controller);
             } catch (error) {
                 console.error(`Can't load controller: ${file}`, error);

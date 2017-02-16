@@ -14,9 +14,8 @@ module.exports = mongoose => {
             },
             password: {
                 type: String,
-                trim: true,
-                required: true,
-                unique: true
+                trim: false,
+                required: true
             },
             name: {
                 first: {

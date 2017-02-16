@@ -1,7 +1,7 @@
 {
   "name": "boilerplate",
   "description": "A basic Express boilerplate application.",
-  "version": "1.0.0",
+  "version": "1.1.6",
   "author": {
     "name": "Stefan Aichholzer",
     "email": "play@analogbird.com",
@@ -16,23 +16,29 @@
   },
   "main": "app/index.js",
   "engines": {
-    "node": ">=6.2"
+    "node": ">=7.0"
   },
   "dependencies": {
+    "attract": "^2.0.1",
     "body-parser": "^1.15.2",
     "compression": "^1.6.2",
     "express": "^4.14.0",
     "mongoose": "^4.6.6",
-    "pug": "^2.0.0-beta6",
+    "pug": "^2.0.0-beta11",
     "salvus": "^1.0.0",
     "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
-    "dotenv": "^2.0.0",
+    "dotenv": "^4.0.0",
     "grunt": "^1.0.1",
+    "grunt-contrib-cssmin": "^2.0.0",
     "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-uglify": "^2.1.0",
     "grunt-jscs": "^3.0.1",
     "grunt-nodemon": "^0.4.2",
     "jscs": "^3.0.7"
+  },
+  "scripts": {
+    "start": "node app/"
   }
 }

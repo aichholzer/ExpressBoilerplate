@@ -20,6 +20,28 @@ module.exports = grunt => {
                 fix: true
             }
         },
+        cssmin: {
+            target: {
+                files: [{
+                    expand: true,
+                    cwd: 'source/css',
+                    src: ['*.css', '!*.min.css'],
+                    dest: 'app/public/css',
+                    ext: '.min.css'
+                }]
+            }
+        },
+        uglify: {
+            unique: {
+                files: [{
+                    expand: true,
+                    cwd: 'source/js',
+                    src: ['*.js', '!*.min.js'],
+                    dest: 'app/public/js',
+                    ext: '.min.js'
+                }]
+            }
+        },
         nodemon: {
             dev: {
                 script: 'app/index.js',
@@ -37,7 +59,7 @@ module.exports = grunt => {
                     cwd: __dirname,
                     ignore: ['node_modules/**'],
                     ext: 'js',
-                    delay: 500
+                    delay: 250
                 }
             }
         }
@@ -46,6 +68,10 @@ module.exports = grunt => {
     grunt.loadNpmTasks('grunt-jscs');
     grunt.loadNpmTasks('grunt-nodemon');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
-    grunt.registerTask('hint', 'Hinting...', ['jshint:boilerplate', 'jscs']);
+    grunt.registerTask('hint', 'Hinting.', ['jshint:boilerplate', 'jscs']);
+    grunt.registerTask('mini', 'Minifying.', ['cssmin', 'uglify']);
+    grunt.registerTask('default', 'Running all tasks.', ['jshint:boilerplate', 'jscs', 'cssmin', 'uglify']);
 };
