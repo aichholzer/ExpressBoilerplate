@@ -1,19 +1,15 @@
-'use strict';
+// Modules
+const express = require('express');
+const bodyParser = require('body-parser');
+const compression = require('compression');
+const serveFavicon = require('serve-favicon');
 
+// Boilerplate
+const m = require('./core/models');
+const config = require('./config');
+const router = require('./router');
 
-require('attract')({ basePath: __dirname });
-const [
-    express,
-    bodyParser,
-    compression,
-    serveFavicon,
-    router,
-    models] = attract('express', 'body-parser', 'compression', 'serve-favicon', 'router', 'core/model');
 const [app, port] = [express(), process.env.PORT || 9000];
-models.on('error', error => {
-    console.error(error);
-    process.exit();
-});
 
 /**
  * Pre-load all model schemas, if any, and start the application.
@@ -21,26 +17,22 @@ models.on('error', error => {
  * @see core/models/index.js
  * @see Models.prototype.load()
  */
-models
-    .load()
-    .then(() => {
+m.load(config.mongo).then(() => {
+  app.locals.pretty = process.env.PRETTY_HTML === 'true';
+  app.set('views', `${__dirname}/core/views`);
+  app.set('view engine', 'pug');
+  app.use(
+    (req, res, next) => {
+      res.setHeader('x-powered-by', 'analogbird.com');
+      next();
+    },
+    express.static(`${__dirname}/public`),
+    bodyParser.json(),
+    bodyParser.urlencoded({ extended: false }),
+    compression(),
+    serveFavicon(`${__dirname}/public/img/favicon.png`),
+    router(express)
+  );
 
-        app.set('views', `${__dirname}/core/views`);
-        app.set('view engine', 'pug');
-        app.locals.pretty = process.env.PRETTY_HTML === 'true' || false;
-
-        app.use(
-            (req, res, next) => {
-                res.setHeader('x-powered-by', 'analogbird.com');
-                next();
-            },
-            express.static(`${__dirname}/public`),
-            bodyParser.json(),
-            bodyParser.urlencoded({ extended: false }),
-            compression(),
-            serveFavicon(`${__dirname}/public/img/favicon.png`),
-            router(express)
-        );
-
-        app.listen(port, () => console.log(`Up on port: ${port}`));
-    });
+  app.listen(port, () => console.log(`Up: ${port}`));
+}).catch(error => console.error(error));

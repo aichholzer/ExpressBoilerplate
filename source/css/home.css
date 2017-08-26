@@ -24,3 +24,17 @@ p {
     margin: 0;
     padding: 0;
 }
+
+a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #ffff00;
+  text-decoration: underline;
+}
+
+.actions {
+  margin-top: 30px;
+}

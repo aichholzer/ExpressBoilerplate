@@ -8,17 +8,25 @@ faster and easier.
 
 #### Setup
 
-1. Clone this repository.
-2. Install what's needed: `npm install`.
-3. Copy `.env.sample` to `.env`. Change the values (if needed).
-4. Run the application: `grunt nodemon *` or `npm start`
+1. Clone this repository,
+2. install what's needed: `npm i`,
+3. copy `.env.sample` to `.env` (change the values, if needed),
+4. run the application: `grunt nodemon *` or `npm start`
 
-\* You should have [Grunt](https://github.com/gruntjs/grunt) installed globally, if not then run: `npm install -g grunt-cli`
+\* You should have [Grunt](https://github.com/gruntjs/grunt) installed globally, if not then run: `npm i -g grunt-cli`
 
 
 #### Done
 
 Visit [http://localhost:9000](http://localhost:9000) (Unless you changed the port in the `.env` file)
+
+
+#### Practice
+
+Take a look at `/app/core/controllers/cities.js` and `/app/core/controllers/users.js`, they both implement some basic CRUD logic. Create a forms in the respective views (`/app/core/views/`) that allow you to create some `users` and `cities`. You can also implement deletion.
+Submit a pull request with your ideas and I will provide detailed feedback on your work and progress.
+
+*Happy learning.*
 
 
 #### Contribute
