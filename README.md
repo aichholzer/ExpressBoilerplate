@@ -11,9 +11,10 @@ faster and easier.
 1. Clone this repository,
 2. install what's needed: `npm i`,
 3. copy `.env.sample` to `.env` (change the values, if needed),
-4. run the application: `grunt nodemon *` or `npm start`
+4. compile your static assets (from `/source`): `grunt mini` or just `grunt`,
+5. run the application: `grunt nodemon *` or `npm start`
 
-\* You should have [Grunt](https://github.com/gruntjs/grunt) installed globally, if not then run: `npm i -g grunt-cli`
+\* In order to run [Grunt](https://github.com/gruntjs/grunt) tasks, make sure you have it installed globally, if not then run: `npm i -g grunt-cli`
 
 
 #### Done
@@ -38,4 +39,3 @@ fork https://github.com/aichholzer/ExpressBoilerplate/
 #### License
 
 [MIT](https://github.com/aichholzer/ExpressBoilerplate/blob/master/LICENSE)
-
