@@ -1,14 +1,14 @@
 // Modules
-const express = require('express');
 const bodyParser = require('body-parser');
 const compression = require('compression');
+const express = require('express');
 const powered = require('powered');
 const serveFavicon = require('serve-favicon');
 
 // Boilerplate
 const config = require('./config');
-const m = require('./core/models');
 const log = require('./core/lib/log');
+const m = require('./core/models');
 const router = require('./core/lib/router');
 
 const [app, port] = [express(), process.env.PORT || 9000];

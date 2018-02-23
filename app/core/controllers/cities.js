@@ -1,3 +1,4 @@
+// Boilerplate
 const m = require('../models');
 
 module.exports = {

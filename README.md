@@ -1,6 +1,9 @@
-## Express boilerplate
+<p align="center">
+  <img src="https://github.com/aichholzer/ExpressBoilerplate/raw/master/assets/boilerplate.png" alt="Express boilerplate" width="600" />
+</p>
+<p>&nbsp;</p>
 
-An [Express](https://github.com/expressjs/express) application ready to use, and extend, in seconds!
+An [Express](https://github.com/expressjs/express) application ready to use -and extend- in seconds!
 
 This is a basic setup and it's intended for making the initial application architecture process much
 faster and easier.

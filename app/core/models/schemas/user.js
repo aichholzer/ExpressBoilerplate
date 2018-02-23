@@ -3,12 +3,12 @@ module.exports = (mongoose) => {
     username: {
       type: String,
       trim: true,
-      require: true
+      required: true
     },
     email: {
       type: String,
       trim: true,
-      require: true
+      required: true
     },
     city: {
       type: mongoose.Schema.Types.ObjectId,
