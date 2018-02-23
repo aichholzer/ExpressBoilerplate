@@ -1,34 +1,14 @@
 require('dotenv').load();
 
-const setupNodemon = (grunt, callback) => ({
-  dev: {
-    script: 'app/index.js',
-    options: {
-      callback,
-      env: {
-        NODE_ENV: grunt.option('env') || 'local',
-        PORT: process.env.PORT
-      },
-      cwd: __dirname,
-      ignore: ['node_modules/**'],
-      ext: 'js',
-      delay: 500
-    }
-  }
-});
-
 module.exports = (grunt) => {
   grunt.initConfig({
-    nodemon: setupNodemon(grunt, (nodemon) => {
-      process.stdout.write('\n\r');
-      nodemon.on('log', (event) => {
-        if (event.type === 'status') {
-          process.stdout.write(`✔︎ ${event.colour}\n\r`);
-        }
-      });
-    }),
     eslint: {
-      target: ['./app/**/*.js']
+      target: [
+        './app/**/*.js',
+        './source/**/*.js',
+        './test/**/*.js'
+      ],
+      options: { quiet: false }
     },
     cssmin: {
       options: {
@@ -54,14 +34,47 @@ module.exports = (grunt) => {
           ext: '.min.js'
         }]
       }
+    },
+    nodemon: {
+      dev: {
+        script: 'app/index.js',
+        options: {
+          callback: (nodemon) => {
+            console.log();
+            nodemon.on('log', (event) => {
+              if (event.type === 'status') {
+                console.log(`✔︎ ${event.colour}`);
+              }
+            });
+          },
+          env: {
+            NODE_ENV: grunt.option('env') || 'local',
+            PORT: process.env.PORT
+          },
+          cwd: __dirname,
+          ignore: ['node_modules/**', 'source/**', 'app/public/**'],
+          ext: 'js',
+          delay: 200
+        }
+      }
+    },
+    watch: {
+      scripts: {
+        files: ['source/**/*', 'Gruntfile.js'],
+        tasks: ['mini'],
+        options: {
+          spawn: false,
+          interrupt: true
+        }
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-uglify-es');
   grunt.loadNpmTasks('grunt-eslint');
 
-  grunt.registerTask('mini', ['cssmin', 'uglify']);
-  grunt.registerTask('default', ['eslint', 'cssmin', 'uglify']);
+  grunt.registerTask('lint', ['eslint']);
+  grunt.registerTask('build', ['cssmin', 'uglify']);
 };

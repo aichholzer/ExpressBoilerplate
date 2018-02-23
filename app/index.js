@@ -2,12 +2,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const compression = require('compression');
+const powered = require('powered');
 const serveFavicon = require('serve-favicon');
 
 // Boilerplate
-const m = require('./core/models');
 const config = require('./config');
-const router = require('./router');
+const m = require('./core/models');
+const log = require('./core/lib/log');
+const router = require('./core/lib/router');
 
 const [app, port] = [express(), process.env.PORT || 9000];
 
@@ -22,17 +24,18 @@ m.load(config.mongo).then(() => {
   app.set('views', `${__dirname}/core/views`);
   app.set('view engine', 'pug');
   app.use(
-    (req, res, next) => {
-      res.setHeader('x-powered-by', 'analogbird.com');
-      next();
-    },
+    powered(),
+    compression(),
     express.static(`${__dirname}/public`),
     bodyParser.json(),
     bodyParser.urlencoded({ extended: false }),
-    compression(),
     serveFavicon(`${__dirname}/public/img/favicon.png`),
-    router(express)
+    router({
+      express,
+      routes: `${__dirname}/core/routes`,
+      controllers: `${__dirname}/core/controllers`
+    })
   );
 
-  app.listen(port, () => console.log(`Up: ${port}`));
-}).catch(error => console.error(error));
+  app.listen(port, log.info.bind(null, `🚀  Up on port: ${port}`));
+}).catch(log.error);

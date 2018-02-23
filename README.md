@@ -8,24 +8,25 @@ faster and easier.
 
 #### Setup
 
-1. Clone this repository,
-2. install what's needed: `npm i`,
-3. copy `.env.sample` to `.env` (change the values, if needed),
-4. compile your static assets (from `/source`): `grunt mini` or just `grunt`,
-5. run the application: `grunt nodemon *` or `npm start`
-
-\* In order to run [Grunt](https://github.com/gruntjs/grunt) tasks, make sure you have it installed globally, if not then run: `npm i -g grunt-cli`
+1. Make you have access to MongoDB (local or remote, does not matter),
+2. clone this repository,
+3. install what's needed: `npm i`,
+4. copy `.env.sample` to `.env` (change the values, if needed),
+5. compile the static assets (these are located in `/source`): `npm run build`,
+6. run the application: `npm start`
 
 
 #### Done
 
-Visit [http://localhost:9000](http://localhost:9000) (Unless you changed the port in the `.env` file)
+Visit [http://localhost:9000](http://localhost:9000) (Unless you changed the port in your `.env` file)
 
 
 #### Practice
 
-Take a look at `/app/core/controllers/cities.js` and `/app/core/controllers/users.js`, they both implement some basic CRUD logic. Create a forms in the respective views (`/app/core/views/`) that allow you to create some `users` and `cities`. You can also implement deletion.
-Submit a pull request with your ideas and I will provide detailed feedback on your work and progress.
+* Take a look at `/app/core/controllers/cities.js` and `/app/core/controllers/users.js`, they both implement some basic CRUD logic.
+* Create forms in their respective views (`/app/core/views/`) that allow you to create `users` and `cities`.
+* Implement `delete` methods for both entities.
+* Submit a pull request.
 
 *Happy learning.*
 

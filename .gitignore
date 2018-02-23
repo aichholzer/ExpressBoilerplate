@@ -30,3 +30,6 @@ node_modules
 # Static files, should be generated from source
 app/public/css
 app/public/js
+
+# Modules
+package-lock.json

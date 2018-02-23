@@ -16,28 +16,32 @@
   },
   "main": "app/index.js",
   "engines": {
-    "node": ">=8.2.1"
+    "node": ">=8.9.1"
   },
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "compression": "^1.6.2",
-    "express": "^4.14.0",
-    "mongoose": "^4.6.6",
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.2",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.6",
+    "powered": "^1.0.1",
     "pug": "^2.0.0-beta11",
-    "serve-favicon": "^2.3.0"
+    "serve-favicon": "^2.4.5",
+    "trafico": "^0.1.6"
   },
   "devDependencies": {
-    "dotenv": "^4.0.0",
-    "eslint": "^4.5.0",
-    "eslint-config-airbnb-base": "^11.3.1",
-    "eslint-plugin-import": "^2.7.0",
-    "grunt": "^1.0.1",
+    "dotenv": "^5.0.0",
+    "eslint": "^4.18.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "grunt": "^1.0.2",
     "grunt-contrib-cssmin": "^2.2.1",
-    "grunt-contrib-uglify": "^3.0.1",
-    "grunt-eslint": "^20.0.0",
+    "grunt-contrib-uglify-es": "git://github.com/gruntjs/grunt-contrib-uglify.git#harmony",
+    "grunt-eslint": "^20.1.0",
     "grunt-nodemon": "^0.4.2"
   },
   "scripts": {
-    "start": "node app/"
+    "build": "grunt build",
+    "start": "grunt nodemon",
+    "lint": "grunt lint"
   }
 }

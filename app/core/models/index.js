@@ -16,7 +16,7 @@ class Models {
         mongoose.Promise = global.Promise;
         await mongoose.connect(url, options);
       } catch (error) {
-        return no('I can\'t connect to the database server.');
+        return no(new Error('I can\'t connect to the database server.'));
       }
 
       const schemaPath = `${__dirname}/schemas/`;
@@ -26,7 +26,7 @@ class Models {
             const schema = require.call(null, `${schemaPath}${file}`);
             this.schemas[file.replace('.js', '')] = schema(mongoose);
           } catch (error) {
-            return no(`I can't load model: ${error.stack}`);
+            return no(new Error(`I can't load model: ${error.stack}`));
           }
         }
 
@@ -45,7 +45,7 @@ class Models {
     return new Promise((yes, no) => {
       const loadedModel = this.schemas[model];
       if (!loadedModel) {
-        return no(`The "${model}" model does not exist.`);
+        return no(new Error(`The "${model}" model does not exist.`));
       }
 
       return yes(loadedModel);
