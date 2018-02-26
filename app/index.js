@@ -1,4 +1,5 @@
 // Modules
+require('attract')({ basePath: __dirname });
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const express = require('express');
@@ -6,10 +7,10 @@ const powered = require('powered');
 const serveFavicon = require('serve-favicon');
 
 // Boilerplate
-const config = require('./config');
-const log = require('./core/lib/log');
-const m = require('./core/models');
-const router = require('./core/lib/router');
+const config = attract('config');
+const log = attract('core/lib/log');
+const m = attract('core/models');
+const router = attract('core/lib/router');
 
 const [app, port] = [express(), process.env.PORT || 9000];
 
@@ -37,5 +38,5 @@ m.load(config.mongo).then(() => {
     })
   );
 
-  app.listen(port, log.info.bind(null, `🚀  Up on port: ${port}`));
+  app.listen(port, log.info.bind(null, `🚀 Up on port: ${port}`));
 }).catch(log.error);

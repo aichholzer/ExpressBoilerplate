@@ -1,7 +1,12 @@
 /* eslint no-console: 0 */
 
-module.exports = {
-  info: (...args) => console.log(`[Boilerplate, ${new Date()}] ${args.join(' ')}`),
+const setDate = (args) => {
+  args.unshift(`[Boilerplate: ${(new Date()).toLocaleString()}]`);
+  return args;
+};
 
-  error: (...args) => console.error(`[Boilerplate, ${new Date()}] ${args.join(' ')}`)
+module.exports = {
+  info: (...args) => console.log.apply(null, setDate(args)),
+
+  error: (...args) => console.error.apply(null, setDate(args))
 };
