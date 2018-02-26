@@ -42,6 +42,7 @@
   "scripts": {
     "build": "grunt build",
     "start": "grunt nodemon",
-    "lint": "grunt lint"
+    "lint": "grunt lint",
+    "watch": "grunt watch"
   }
 }

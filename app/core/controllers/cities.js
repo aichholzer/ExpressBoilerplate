@@ -3,8 +3,8 @@ const m = require('../models');
 
 module.exports = {
   read: async (req, res) => {
-    if (req.params.user) {
-      return res.send(await m.city.findById(req.params.user));
+    if (req.params.city) {
+      return res.send(await m.city.findById(req.params.city));
     }
 
     return res.render('cities', {
@@ -15,8 +15,8 @@ module.exports = {
 
   create: async (req, res, next) => {
     try {
-      const user = await m.city.create(req.body);
-      return res.render('cities', user);
+      const city = await m.city.create(req.body);
+      return res.render('cities', city);
     } catch (error) {
       return next(error);
     }
@@ -24,8 +24,8 @@ module.exports = {
 
   delete: async (req, res, next) => {
     try {
-      const user = await m.city.findById(req.params.user).exec();
-      await user.remove();
+      const city = await m.city.findById(req.params.city).exec();
+      await city.remove();
       return res.status(200).end();
     } catch (error) {
       return next(error);

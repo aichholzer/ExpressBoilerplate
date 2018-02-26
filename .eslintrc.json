@@ -4,6 +4,7 @@
     "import"
   ],
   "rules": {
+    "no-console": "error",
     "func-names": ["error", "always"],
     "comma-dangle": ["error", "never"],
     "no-param-reassign": ["error", { "props": false }],
