@@ -1,7 +1,7 @@
 {
   "name": "boilerplate",
   "description": "A basic Express boilerplate application.",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "author": {
     "name": "Stefan Aichholzer",
     "email": "play@analogbird.com",
@@ -16,21 +16,21 @@
   },
   "main": "app/index.js",
   "engines": {
-    "node": ">=8.9.1"
+    "node": ">=8.9.4"
   },
   "dependencies": {
     "attract": "^2.0.5",
     "body-parser": "^1.18.2",
     "compression": "^1.7.2",
     "express": "^4.16.2",
-    "mongoose": "^5.0.6",
+    "mongoose": "^5.0.7",
     "powered": "^1.0.1",
     "pug": "^2.0.0-beta11",
     "serve-favicon": "^2.4.5",
     "trafico": "^0.1.6"
   },
   "devDependencies": {
-    "dotenv": "^5.0.0",
+    "dotenv": "^5.0.1",
     "eslint": "^4.18.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.9.0",
