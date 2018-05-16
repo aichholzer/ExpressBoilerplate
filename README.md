@@ -11,6 +11,8 @@ faster and easier.
 
 #### Setup
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/aichholzer/ExpressBoilerplate.svg)](https://greenkeeper.io/)
+
 1. Make you have access to MongoDB (local or remote, does not matter),
 2. clone this repository,
 3. install what's needed: `npm i`,
